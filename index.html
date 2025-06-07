@@ -3,60 +3,69 @@
 <head>
 	<title>AM I A FROG A MANGO OR NAPOLEON???????????????</title>
 	<meta name="description" content="[BIG SHOT] SIMULATOR (Spamton NEO Fight) CHAOS SIMULATOR (Jevil Fight)"/>
-<body>
-  background-color: black; /* Solid black background */
-  color: white; /* Main body text color to white */
-  font-family: "Comic Sans MS", cursive, sans-serif; /* Sets the font to Comic Sans, with fallbacks */
-  margin: 0; /* Remove default body margin */
-  padding: 0; /* Remove default body padding */
-  position: relative; /* Needed for positioning the clock */
-  min-height: 100vh; /* Ensure body takes at least full viewport height */
+<style>
+body {
+  background-color: black; /* Solid black background */
+  color: white; /* Main body text color to white */
+  font-family: "Comic Sans MS", cursive, sans-serif; /* Sets the font to Comic Sans, with fallbacks */
+  margin: 0; /* Remove default body margin */
+  padding: 0; /* Remove default body padding */
+  position: relative; /* Needed for positioning the clock */
+  min-height: 100vh; /* Ensure body takes at least full viewport height */
+}
 
-  text-align: center; /* Center the heading */
+h1 {
+    text-align: center; /* Center the heading */
+}
 
-  display: inline-block; /* Allows setting padding, width, etc. */
-  padding: 10px 20px; /* Padding inside the button */
-  margin: 10px; /* Space around the buttons */
-  background-color: aqua; /* Aqua background for the buttons */
-  color: white; /* White text color for the buttons */
-  text-align: center; /* Center the text inside the button */
-  text-decoration: none; /* Remove underline from links */
-  font-size: 16px; /* Font size */
-  border: none; /* No border */
-  border-radius: 8px; /* Slightly rounded corners */
-  cursor: pointer; /* Change cursor to pointer on hover */
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s; /* Smooth transition for hover effects */
+a {
+  display: inline-block; /* Allows setting padding, width, etc. */
+  padding: 10px 20px; /* Padding inside the button */
+  margin: 10px; /* Space around the buttons */
+  background-color: aqua; /* Aqua background for the buttons */
+  color: white; /* White text color for the buttons */
+  text-align: center; /* Center the text inside the button */
+  text-decoration: none; /* Remove underline from links */
+  font-size: 16px; /* Font size */
+  border: none; /* No border */
+  border-radius: 8px; /* Slightly rounded corners */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s; /* Smooth transition for hover effects */
+}
 
-  background-color: #00cccc; /* Darker aqua on hover */
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Subtle shadow on hover */
+a:hover {
+  background-color: #00cccc; /* Darker aqua on hover */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Subtle shadow on hover */
+}
 
 /* --- Digital Clock Styles --- */
 #digital-clock {
-  position: fixed; /* Fixes the clock relative to the viewport */
-  bottom: 10px; /* 10px from the bottom */
-  right: 10px; /* 10px from the right */
-  
-  /* --- THESE ARE THE CHANGES YOU REQUESTED --- */
-  color: white; /* Clock color is white */
-  font-family: "Comic Sans MS", cursive, sans-serif; /* Clock font is Comic Sans */
-  /* --- END OF REQUESTED CHANGES --- */
+  position: fixed; /* Fixes the clock relative to the viewport */
+  bottom: 10px; /* 10px from the bottom */
+  right: 10px; /* 10px from the right */
+  
+  /* --- THESE ARE THE CHANGES YOU REQUESTED --- */
+  color: white; /* Clock color is white */
+  font-family: "Comic Sans MS", cursive, sans-serif; /* Clock font is Comic Sans */
+  /* --- END OF REQUESTED CHANGES --- */
 
-  font-size: 2em; /* Adjust font size as needed */
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background for readability */
-  padding: 10px 15px; /* Padding around the time */
-  border-radius: 5px; /* Slightly rounded corners for the clock background */
-  z-index: 1000; /* Ensure it stays on top of other content */
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Green glow effect (kept for contrast) */
+  font-size: 2em; /* Adjust font size as needed */
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background for readability */
+  padding: 10px 15px; /* Padding around the time */
+  border-radius: 5px; /* Slightly rounded corners for the clock background */
+  z-index: 1000; /* Ensure it stays on top of other content */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Green glow effect (kept for contrast) */
+}
 </style>
 </head>
 <body>
-    
-    <h1>MY STUFF SO FAR</h1>
+    
+    <h1>MY STUFF SO FAR</h1>
 	<a href="./BIGSHOT-SIMULATOR/">[BIG SHOT] SIMULATOR (Spamton NEO Fight)</a><br/>
 	<a href="./CHAOS-SIMULATOR/">CHAOS SIMULATOR (Jevil Fight)</a><br/>
 
-    <div id="digital-clock"></div>
+    <div id="digital-clock"></div>
 	
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-6S9Y2CXQ4H"></script>
 	<script>
@@ -65,39 +74,26 @@
 		gtag('js', new Date());
 		gtag('config', 'G-6S9Y2CXQ4H');
 
-        // Register the Service Worker
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('service-worker.js')
-                    .then(registration => {
-                        console.log('Service Worker registered! Scope:', registration.scope);
-                    })
-                    .catch(err => {
-                        console.log('Service Worker registration failed:', err);
-                    });
-            });
+        // --- Digital Clock Script ---
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
+
+            // Add leading zeros if necessary
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('digital-clock').textContent = timeString;
         }
 
-        // --- Digital Clock Script ---
-        function updateClock() {
-            const now = new Date();
-            let hours = now.getHours();
-            let minutes = now.getMinutes();
-            let seconds = now.getSeconds();
-
-            // Add leading zeros if necessary
-            hours = hours < 10 ? '0' + hours : hours;
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-            seconds = seconds < 10 ? '0' + seconds : seconds;
-
-            const timeString = `${hours}:${minutes}:${seconds}`;
-            document.getElementById('digital-clock').textContent = timeString;
-        }
-
-        // Update the clock every second
-        setInterval(updateClock, 1000);
-        // Set the initial time immediately
-        updateClock();
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+        // Set the initial time immediately
+        updateClock();
 	</script>
 </body>
 </html>
