@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>AM I A FROG A MANGO OR NAPOLEON???????????????</title>
-<meta name="description" content="[BIG SHOT] SIMULATOR (Spamton NEO Fight) CHAOS SIMULATOR (Jevil Fight)"/>
-<style>
+	<title>AM I A FROG A MANGO OR NAPOLEON???????????????</title>
+	<meta name="description" content="[BIG SHOT] SIMULATOR (Spamton NEO Fight) CHAOS SIMULATOR (Jevil Fight)"/>
 body {
   background-color: black; /* Solid black background */
   color: white; /* Main body text color to white */
@@ -62,16 +61,30 @@ a:hover {
 <body>
     
     <h1>MY STUFF SO FAR</h1>
-<a href="./BIGSHOT-SIMULATOR/">[BIG SHOT] SIMULATOR (Spamton NEO Fight)</a><br/>
-<a href="./CHAOS-SIMULATOR/">CHAOS SIMULATOR (Jevil Fight)</a><br/>
+	<a href="./BIGSHOT-SIMULATOR/">[BIG SHOT] SIMULATOR (Spamton NEO Fight)</a><br/>
+	<a href="./CHAOS-SIMULATOR/">CHAOS SIMULATOR (Jevil Fight)</a><br/>
 
     <div id="digital-clock"></div>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6S9Y2CXQ4H"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-6S9Y2CXQ4H');
+	
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-6S9Y2CXQ4H"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-6S9Y2CXQ4H');
+
+        // Register the Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered! Scope:', registration.scope);
+                    })
+                    .catch(err => {
+                        console.log('Service Worker registration failed:', err);
+                    });
+            });
+        }
 
         // --- Digital Clock Script ---
         function updateClock() {
@@ -93,6 +106,6 @@ gtag('config', 'G-6S9Y2CXQ4H');
         setInterval(updateClock, 1000);
         // Set the initial time immediately
         updateClock();
-</script>
+	</script>
 </body>
 </html>
